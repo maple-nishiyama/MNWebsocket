@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "MNWebsocket\\Libs\\": "Libs/",
+            "MNWebsocket\\Libs\\Connection\\": "Libs/Connection/",
+            "MNWebsocket\\Libs\\IO\\": "Libs/IO/",
+            "MNWebsocket\\Libs\\Log\\": "Libs/Log/",
+            "MNWebsocket\\Libs\\Server\\": "Libs/Server/",
+            "MNWebsocket\\Libs\\Exception\\": "Libs/Exception/",
+            "MNWebsocket\\Examples\\": "Examples/"
+        }
+    }
+}

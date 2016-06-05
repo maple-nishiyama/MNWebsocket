@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Echo Application Client</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<script type="text/javascript">
+			$(function () {
+				var ws = new WebSocket('ws://localhost:12345/echo', []);
+				ws.onopen = function () {
+					console.log("websocket connected!");
+				};
+				ws.onmessage = function (message) {
+					console.log(message.data);
+					var ul = $('#responses');
+					ul.prepend('<li>' + message.data + '</li>');
+				};
+				ws.onclose = function () {
+					alert("websocket closed.");
+				};
+				ws.onerror = function (e) {
+					console.log("websocket error: " + e);
+				};
+				$('#btnSendMessage').on('click', function () {
+					var message = $('#message').val();
+					$('#message').val('');
+					ws.send(message);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Echo Application Client</h1>
+		<div>
+			<input id="message" type="text" size="32"/>
+			<button id="btnSendMessage">send</button>
+		</div>
+		<div>
+			<h2>↓↓Websocket responses↓↓</h2>
+			<ul id="responses">
+			</ul>
+		</div>
+	</body>
+</html>
